@@ -1,0 +1,26 @@
+# Works with `docker compose` or `podman compose`.
+# Supabase itself runs separately: Supabase Cloud, or `npx supabase start` locally.
+services:
+  api:
+    build: ./backend
+    env_file: ./backend/.env
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+
+  # Job queue for alerts and RAG ingestion (used from Step 3 on).
+  redis:
+    image: docker.io/library/redis:7-alpine
+    ports:
+      - "127.0.0.1:6379:6379"
+
+  # Throwaway Postgres + pgvector for backend tests only.
+  test-db:
+    image: docker.io/pgvector/pgvector:pg17
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: mh_test
+    ports:
+      - "127.0.0.1:54339:5432"
+    profiles: ["test"]

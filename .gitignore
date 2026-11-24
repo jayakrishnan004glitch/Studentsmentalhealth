@@ -1,0 +1,36 @@
+# Secrets
+.env
+.env.*
+!.env.example
+mobile/env/*.json
+!mobile/env/*.example.json
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Node
+node_modules/
+.next/
+
+# ML artefacts (weights are large; models/README.md lists sources)
+models/*
+!models/README.md
+*.pt
+*.onnx
+*.safetensors
+ml/data/
+
+# Supabase local state
+supabase/.temp/
+supabase/.branches/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store

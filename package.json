@@ -1,0 +1,11 @@
+{
+  "name": "mh-companion",
+  "private": true,
+  "description": "Tooling for the MH Companion monorepo (Supabase CLI).",
+  "scripts": {
+    "supabase": "supabase"
+  },
+  "devDependencies": {
+    "supabase": "^3.1.0"
+  }
+}
